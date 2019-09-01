@@ -94,6 +94,7 @@ int main(void)
             {
                 printf("%c%s",c,temp);
             }
+            free(suffix);
             free(temp);
             count=i+1;
         }     
