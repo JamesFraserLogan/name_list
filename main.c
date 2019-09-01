@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <stdbool.h>
 int main(void)
 {  
     struct stat *stat_buf=calloc(1,sizeof(struct stat));
@@ -45,13 +46,38 @@ int main(void)
         fclose(fp);
         exit(EXIT_FAILURE);
     }
-    for(size_t i=0;i<stat_buf->st_size;i++)
+    for(size_t i=0;i<stat_buf->st_size;i++) // improve by filtering out lines that cointain (, ,@)
     {
         switch(*(data+i))
         {
             case EOF:
             {
                 continue;
+                break;
+            }
+            case ' ':
+            {
+
+                break;
+            }
+                 case '\t':
+            {
+
+                break;
+            }
+                 case '@':
+            {
+
+                break;
+            }
+                 case '(':
+            {
+
+                break;
+            }
+                 case ')':
+            {
+
                 break;
             }
             default:
